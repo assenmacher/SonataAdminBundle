@@ -184,12 +184,12 @@ class DatagridMapper extends BaseMapper implements MapperInterface
         return $this;
     }
 
-    public function get($key)
+    public function get(string $key)
     {
         return $this->datagrid->getFilter($key);
     }
 
-    public function has($key)
+    public function has(string $key): bool
     {
         return $this->datagrid->hasFilter($key);
     }
@@ -199,7 +199,7 @@ class DatagridMapper extends BaseMapper implements MapperInterface
         return array_keys($this->datagrid->getFilters());
     }
 
-    public function remove($key)
+    public function remove(string $key): self
     {
         $this->getAdmin()->removeFilterFieldDescription($key);
         $this->datagrid->removeFilter($key);
@@ -207,7 +207,7 @@ class DatagridMapper extends BaseMapper implements MapperInterface
         return $this;
     }
 
-    public function reorder(array $keys)
+    public function reorder(array $keys): self
     {
         $this->datagrid->reorderFilters($keys);
 
