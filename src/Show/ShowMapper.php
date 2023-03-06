@@ -73,7 +73,7 @@ class ShowMapper extends BaseGroupedMapper
      *
      * @return static
      */
-    public function add($name, $type = null, array $fieldDescriptionOptions = [])
+    public function add($name, ?string $type = null, array $fieldDescriptionOptions = []): self
     {
         if (!$this->shouldApply()) {
             return $this;
@@ -141,17 +141,17 @@ class ShowMapper extends BaseGroupedMapper
         return $this;
     }
 
-    public function get($key)
+    public function get(string $key)
     {
         return $this->list->get($key);
     }
 
-    public function has($key)
+    public function has(string $key): bool
     {
         return $this->list->has($key);
     }
 
-    public function remove($key)
+    public function remove(string $key): self
     {
         $this->getAdmin()->removeShowFieldDescription($key);
         $this->list->remove($key);
@@ -164,7 +164,7 @@ class ShowMapper extends BaseGroupedMapper
         return array_keys($this->list->getElements());
     }
 
-    public function reorder(array $keys)
+    public function reorder(array $keys): self
     {
         $this->getAdmin()->reorderShowGroup($this->getCurrentGroupName(), $keys);
 
