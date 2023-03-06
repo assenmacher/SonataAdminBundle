@@ -87,7 +87,7 @@ class FormMapper extends BaseGroupedMapper implements BlockFormMapper
      *
      * @return static
      */
-    public function add($name, ?string $type = null, array $options = []): self
+    public function add($name, ?string $type = null, array $options = [], array $fieldDescriptionOptions = []): self
     {
         if (!$this->shouldApply()) {
             return $this;
