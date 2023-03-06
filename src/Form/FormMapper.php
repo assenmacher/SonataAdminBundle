@@ -32,7 +32,7 @@ use Symfony\Component\Form\FormBuilderInterface;
  * @phpstan-template T of object
  * @phpstan-extends BaseGroupedMapper<T>
  */
-class FormMapper extends BaseGroupedMapper impelments BlockFormMapper
+class FormMapper extends BaseGroupedMapper implements BlockFormMapper
 {
     /**
      * @var FormBuilderInterface
