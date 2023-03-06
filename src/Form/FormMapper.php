@@ -70,7 +70,7 @@ class FormMapper extends BaseGroupedMapper implements BlockFormMapper
         return $this->admin;
     }
 
-    public function reorder(array $keys)
+    public function reorder(array $keys): self
     {
         $this->getAdmin()->reorderFormGroup($this->getCurrentGroupName(), $keys);
 
@@ -87,7 +87,7 @@ class FormMapper extends BaseGroupedMapper implements BlockFormMapper
      *
      * @return static
      */
-    public function add($name, $type = null, array $options = [], array $fieldDescriptionOptions = [])
+    public function add($name, ?string $type = null, array $options = []): self
     {
         if (!$this->shouldApply()) {
             return $this;
@@ -230,14 +230,14 @@ class FormMapper extends BaseGroupedMapper implements BlockFormMapper
         return $this;
     }
 
-    public function get($key)
+    public function get(string $key)
     {
         $name = $this->sanitizeFieldName($key);
 
         return $this->formBuilder->get($name);
     }
 
-    public function has($key)
+    public function has(string $key): bool
     {
         $key = $this->sanitizeFieldName($key);
 
@@ -252,7 +252,7 @@ class FormMapper extends BaseGroupedMapper implements BlockFormMapper
         return array_keys($this->formBuilder->all());
     }
 
-    public function remove($key)
+    public function remove(string $key): self
     {
         $key = $this->sanitizeFieldName($key);
         $this->getAdmin()->removeFormFieldDescription($key);
@@ -277,7 +277,7 @@ class FormMapper extends BaseGroupedMapper implements BlockFormMapper
      *
      * @return FormBuilderInterface
      */
-    public function create($name, $type = null, array $options = [])
+    public function create(string $name, ?string $type = null, array $options = []): FormBuilderInterface
     {
         return $this->formBuilder->create($name, $type, $options);
     }
@@ -289,7 +289,7 @@ class FormMapper extends BaseGroupedMapper implements BlockFormMapper
      *
      * @return FormMapper
      */
-    public function setHelps(array $helps = [])
+    public function setHelps(array $helps = []): self
     {
         @trigger_error(sprintf(
             'The "%s()" method is deprecated since sonata-project/admin-bundle 3.74 and will be removed in version 4.0.'
@@ -311,7 +311,7 @@ class FormMapper extends BaseGroupedMapper implements BlockFormMapper
      *
      * @return FormMapper
      */
-    public function addHelp($name, $help)
+    public function addHelp(string $name, string $help): self
     {
         if ('sonata_deprecation_mute' !== (\func_get_args()[2] ?? null)) {
             @trigger_error(sprintf(
