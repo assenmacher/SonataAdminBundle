@@ -18,6 +18,7 @@ use Sonata\AdminBundle\Builder\FormContractorInterface;
 use Sonata\AdminBundle\FieldDescription\FieldDescriptionInterface;
 use Sonata\AdminBundle\Form\Type\CollectionType;
 use Sonata\AdminBundle\Mapper\BaseGroupedMapper;
+use Sonata\BlockBundle\Form\Mapper\FormMapper as BlockFormMapper;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType as SymfonyCollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -31,7 +32,7 @@ use Symfony\Component\Form\FormBuilderInterface;
  * @phpstan-template T of object
  * @phpstan-extends BaseGroupedMapper<T>
  */
-class FormMapper extends BaseGroupedMapper
+class FormMapper extends BaseGroupedMapper impelments BlockFormMapper
 {
     /**
      * @var FormBuilderInterface
