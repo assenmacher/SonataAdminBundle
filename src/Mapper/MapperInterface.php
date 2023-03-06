@@ -37,21 +37,21 @@ interface MapperInterface
      *
      * @return mixed
      */
-    public function get($key);
+    public function get(string $key);
 
     /**
      * @param string $key
      *
      * @return bool
      */
-    public function has($key);
+    public function has(string $key): bool;
 
     /**
      * @param string $key
      *
      * @return static
      */
-    public function remove($key);
+    public function remove(string $key): self;
 
     /**
      * NEXT_MAJOR: Uncomment this.
@@ -67,5 +67,5 @@ interface MapperInterface
      *
      * @return static
      */
-    public function reorder(array $keys);
+    public function reorder(array $keys): self;
 }
